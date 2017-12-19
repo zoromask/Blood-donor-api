@@ -54,14 +54,9 @@ exports.addBloodToDB = function(req, res) {
         height: req.body.height,
         weight: req.body.weight,
     });
-
     bloodToSave.save(function(err, data) {
         if (err) {
-            var templateData = {
-                errors: err.errors,
-                blood: req.body
-            };
-            res.json(templateData);
+            res.send(err);
         }
         res.send("1 document inserted successfully!!");
     });
@@ -70,7 +65,7 @@ exports.addBloodToDB = function(req, res) {
 exports.updateBloodToDB = function(req, res) {
     var requestBloodId = mongoose.Types.ObjectId(req.params.id);
     var bloodToUpdate = {};
-    
+
     Object.assign(bloodToUpdate, {
         fullName: req.body.fullName,
         address: req.body.address,
@@ -96,4 +91,29 @@ exports.updateBloodToDB = function(req, res) {
 
         res.send("1 document updated successfully!!");
     })
+}
+
+exports.filterBlood = function(req, res) {
+    var queryModel = parseBloodQueryModel(req);
+    Blood.find(queryModel, function(err, data) {
+        if (err) {
+            res.send(err);
+        }
+        // prepare data for JSON
+        var jsonData = {
+            status: 'OK',
+            blood: data
+        }
+        res.json(jsonData);
+    })
+}
+
+parseBloodQueryModel = function(req) {
+    return {
+        bloodType: req.query.bloodType,
+        address: req.query.address,
+        // longitude: { $gte: +req.query.longitudeMin, $lte: +req.query.longitudeMax },
+        // latitude: { $gte: +req.query.latitudeMin, $lte: +req.query.latitudeMax },
+        age: { $gte: +req.query.ageFrom, $lte: +req.query.ageTo },
+    }
 }

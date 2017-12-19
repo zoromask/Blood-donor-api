@@ -15,10 +15,12 @@ app.use(methodOverride());
 
 var routes = require('./src/mongodb/index.js');
 
+// api url
 app.get('/blood', routes.index);
 app.post('/blood/add', routes.addBloodToDB);
 app.put('/blood/update/:id', routes.updateBloodToDB);
 app.get('/blood/:id', routes.oneBlood);
+app.get('/filter/blood', routes.filterBlood);
 
 // create NodeJS HTTP server using 'app'
 http.createServer(app).listen(app.get('port'), function() {
