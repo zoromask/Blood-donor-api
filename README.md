@@ -7,12 +7,15 @@
 
 2. Run npm install (including: express, mongoose, body-parser, mongodb)
 
-3. Run node "direction"\Blood-donor\express\express.bloddonor.js from "C:\Users\user_name_instance" to run mongodb server
+3. Run npm start
 
-4. Check api url in file: express.bloddonor.js
+4. Check api url in file: \server.js
 
-5. Check model in \mongodb\model\blooddonor.model.js
-
+5. Check model in \src\mongodb\models\blooddonor.model.js
+ 
 6. Use Postman to test api
 
-7. Use MongoDB compass to check database
+7. Import Bloods.postman_collection.json to get api url & parameters
+
+8. Use MongoDB compass to check database
+
