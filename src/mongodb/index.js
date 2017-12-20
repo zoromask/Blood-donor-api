@@ -96,10 +96,11 @@ exports.updateBloodToDB = function(req, res) {
             blood: data
         }
         res.json(jsonData);
-    })
+    });
 }
 
 exports.filterBlood = function(req, res) {
+
     Blood.find({})
         .where('bloodType').equals(req.query.bloodType)
         .where('age').gte(+req.query.ageFrom).lte(+req.query.ageTo)

@@ -1,8 +1,10 @@
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var configs = require('../configs');
+var env = process.env.NODE_ENV || 'development';
+var mongodbURI = env === 'development' ? configs.MONGO_LOCAL_URI : configs.MONGO_PROD_URI;
 
-mongoose.connect("mongodb://localhost:27017/blooddonor", { config: { autoIndex: false } }, function(error) {
+mongoose.connect(mongodbURI, { config: { autoIndex: false } }, function(error) {
     if (error) console.error(error);
     else console.log('mongo connected');
 });
