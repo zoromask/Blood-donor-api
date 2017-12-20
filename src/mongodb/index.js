@@ -41,13 +41,14 @@ exports.oneBlood = function(req, res) {
 
 exports.addBloodToDB = function(req, res) {
     var bloodToSave = new Blood({
-        fullName: req.body.fullName,
+        fullName: req.body.fullName.trim(),
+        email: req.body.email.trim(),
         address: req.body.address,
         longitude: req.body.longitude,
         latitude: req.body.latitude,
         phone: req.body.phone,
         age: req.body.age,
-        bloodType: req.body.bloodType,
+        bloodType: req.body.bloodType.trim(),
         height: req.body.height,
         weight: req.body.weight,
     });
@@ -69,13 +70,14 @@ exports.updateBloodToDB = function(req, res) {
     var bloodToUpdate = {};
 
     Object.assign(bloodToUpdate, {
-        fullName: req.body.fullName,
+        fullName: req.body.fullName.trim(),
+        email: req.body.email.trim(),
         address: req.body.address,
         longitude: req.body.longitude,
         latitude: req.body.latitude,
         phone: req.body.phone,
         age: req.body.age,
-        bloodType: req.body.bloodType,
+        bloodType: req.body.bloodType.trim(),
         height: req.body.height,
         weight: req.body.weight,
     });
@@ -100,7 +102,6 @@ exports.updateBloodToDB = function(req, res) {
 }
 
 exports.filterBlood = function(req, res) {
-
     Blood.find({})
         .where('bloodType').equals(req.query.bloodType)
         .where('age').gte(+req.query.ageFrom).lte(+req.query.ageTo)
@@ -117,4 +118,18 @@ exports.filterBlood = function(req, res) {
             }
             res.json(jsonData);
         });
+}
+
+exports.getByEmail = function(req, res) {
+    var emailQuery = req.query.email.trim();
+    Blood.find({}).where('email').equals(emailQuery).exec(function(err, data) {
+        if (err) {
+            res.send(err);
+        }
+        var jsonData = {
+            status: 'OK',
+            blood: data
+        }
+        res.json(jsonData);
+    })
 }

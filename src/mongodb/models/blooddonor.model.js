@@ -17,6 +17,7 @@ var nameValidation = function(val) {
 
 bloodSchema = new Schema({
     fullName: { type: String, required: true, validate: [nameValidation, "Name is required."] },
+    email: { type: String, required: true, validate: [nameValidation, "Email is required."] },
     address: String,
     longitude: { type: Number, required: true },
     latitude: { type: Number, required: true },

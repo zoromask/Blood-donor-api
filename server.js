@@ -21,6 +21,7 @@ app.get('/blood', routes.index);
 app.post('/blood/add', routes.addBloodToDB);
 app.put('/blood/update/:id', routes.updateBloodToDB);
 app.get('/blood/:id', routes.oneBlood);
+app.get('/filter/getbyemail', routes.getByEmail);
 app.get('/filter/blood', routes.filterBlood);
 
 
