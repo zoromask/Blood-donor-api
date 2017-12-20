@@ -19,3 +19,8 @@
 
 8. Use MongoDB compass to check database
 
+## Heroku
+
+1. Download and install heroku-cli: https://devcenter.heroku.com/articles/heroku-cli#download-and-install
+
+2. 
