@@ -10,7 +10,7 @@
 		{
 			"name": "http://localhost:5000/blood/update/5a38c43e1afae85c04ce7d93",
 			"request": {
-				"url": "http://localhost:5000/blood/update/5a38c43e1afae85c04ce7d93",
+				"url": "http://localhost:5000/blood/update/5a3a114618bcbb168811aa80",
 				"method": "PUT",
 				"header": [
 					{
@@ -25,6 +25,12 @@
 						{
 							"key": "fullName",
 							"value": "Tai Nguyen",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "nguyentai.fit2@gmail.com",
 							"description": "",
 							"type": "text"
 						},
@@ -66,7 +72,7 @@
 						},
 						{
 							"key": "height",
-							"value": "178",
+							"value": "180",
 							"description": "",
 							"type": "text"
 						},
@@ -111,6 +117,12 @@
 						{
 							"key": "fullName",
 							"value": "Nguyễn A",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "nguyentai.fit@gmail.com",
 							"description": "",
 							"type": "text"
 						},
@@ -183,7 +195,7 @@
 			"name": "http://localhost:5000/filter/blood?bloodType=A&ageFrom=10&ageTo=30&longitudeMin=0&longitudeMax=999&latitudeMin=0&latitudeMax=999",
 			"request": {
 				"url": {
-					"raw": "http://localhost:5000/filter/blood?bloodType=A&ageFrom=10&ageTo=30&longitudeMin=0&longitudeMax=999&latitudeMin=0&latitudeMax=999",
+					"raw": "http://localhost:5000/filter/blood?bloodType=A&ageFrom=0&ageTo=30&longitudeMin=-1000&longitudeMax=999&latitudeMin=-1000&latitudeMax=999",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -202,7 +214,7 @@
 						},
 						{
 							"key": "ageFrom",
-							"value": "10",
+							"value": "0",
 							"equals": true,
 							"description": ""
 						},
@@ -214,7 +226,7 @@
 						},
 						{
 							"key": "longitudeMin",
-							"value": "0",
+							"value": "-1000",
 							"equals": true,
 							"description": ""
 						},
@@ -226,13 +238,44 @@
 						},
 						{
 							"key": "latitudeMin",
-							"value": "0",
+							"value": "-1000",
 							"equals": true,
 							"description": ""
 						},
 						{
 							"key": "latitudeMax",
 							"value": "999",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/filter/getbyemail?email=nguyentai.fit2@gmail.com     ",
+			"request": {
+				"url": {
+					"raw": "http://localhost:5000/filter/getbyemail?email=nguyentai.fit2@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"filter",
+						"getbyemail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "nguyentai.fit2@gmail.com     ",
 							"equals": true,
 							"description": ""
 						}
