@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride());
 
-var routes = require('./src/mongodb/index.js');
+var routes = require('./src/controllers/blooddonor.controller.js');
 
 // api url
 app.get('/blood', routes.index);

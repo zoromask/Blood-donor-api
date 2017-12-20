@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Blood = require("./models/blooddonor.model.js");
+var Blood = require("../models/blooddonor.model.js");
 
 exports.index = function(req, res) {
     bloodQuery = Blood.find({});
