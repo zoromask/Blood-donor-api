@@ -13,6 +13,7 @@ app.set('port', process.env.PORT || 5000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride());
+app.use(cors({origin: 'https://blood-donor-vn.herokuapp.com/'}));
 
 var routes = require('./src/controllers/blooddonor.controller.js');
 
