@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var methodOverride = require('method-override');
 var cluster = require('cluster');
+var cors = require('cors');
 
 var app = express();
 
