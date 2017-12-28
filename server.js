@@ -10,11 +10,15 @@ var cors = require('cors');
 
 var app = express();
 
+var env = process.env.NODE_ENV || 'development';
+var configs = require('./src/configs');
+var webURI = env === 'development' ? configs.WEB_LOCAL_URI : configs.WEB_PROD_URI;
+
 app.set('port', process.env.PORT || 5000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride());
-app.use(cors({origin: 'https://blood-donor-vn.herokuapp.com'}));
+app.use(cors({origin: webURI}));
 
 var routes = require('./src/controllers/blooddonor.controller.js');
 
