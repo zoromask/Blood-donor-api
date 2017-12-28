@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var Blood = require("../models/blooddonor.model.js");
+const faker = require('faker');
+faker.locale = "vi";
 
 exports.index = function(req, res) {
     bloodQuery = Blood.find({});
@@ -132,4 +134,36 @@ exports.getByEmail = function(req, res) {
         }
         res.json(jsonData);
     })
+}
+
+exports.addBloodToDBFake = function (req, res) {
+    var number = req.body.number;
+    var jsonData = {
+        status: 'OK',
+        message: number+ ' document inserted successfully!!',
+    }
+    if (number)
+        for (var i = 0; i < number; i++) {
+            var User = {
+                fullName: faker.name.findName(),
+                email: faker.internet.email(),
+                address: faker.address.streetAddress(),
+                longitude: faker.finance.amount(105.734138, 105.901680, 8),
+                latitude: faker.finance.amount(21.067942, 20.962822, 8),
+                phone: faker.phone.phoneNumber(),
+                age: faker.random.number(18, 60),
+                bloodType: faker.random.arrayElement(["A", "B", "AB", "O"]),
+                height: faker.random.number(150, 220),
+                weight: faker.random.number(45, 100),
+            }
+            var bloodToSave = new Blood({
+                ...User
+            });
+            bloodToSave.save(function (err, data) {
+                if (err) {
+                    res.send(err);
+                }
+            });
+        };
+    res.json(jsonData);
 }

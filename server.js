@@ -29,6 +29,8 @@ app.put('/blood/update/:id', routes.updateBloodToDB);
 app.get('/blood/:id', routes.oneBlood);
 app.get('/filter/getbyemail', routes.getByEmail);
 app.get('/filter/blood', routes.filterBlood);
+app.post('/addFake', routes.addBloodToDBFake);
+
 
 
 var workers = process.env.WORKERS || require('os').cpus().length;
